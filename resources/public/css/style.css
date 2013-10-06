@@ -1,6 +1,77 @@
+.navbar {
+  margin-bottom: 0;
+}
+
 .full-width-container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.pane {
+  position: relative;
+  overflow: hidden;
+  margin: 12px 0;
+  border: 1px solid #dddddd;
+  -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.08);
+     -moz-box-shadow: inset 0 0 1px rgba(0,0,0,0.08);
+          box-shadow: inset 0 0 1px rgba(0,0,0,0.08);
+}
+
+.pane.small {
+  min-height: 200px;
+}
+
+.pane.large {
+  min-height: 420px;
+}
+
+.pane-label {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  padding: 2px 4px;
+  border: 1px solid #dddddd;
+  background-color: #f5f5f5;
+  font-size: 12px;
+  line-height: 12px;
+  opacity: 1;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+  -webkit-transition: opacity .3s linear;
+     -moz-transition: opacity .3s linear;
+          transition: opacity .3s linear;
+}
+
+.pane:hover {
+  border-color: #cccccc;
+  -webkit-transition: opacity .3s linear;
+     -moz-transition: opacity .3s linear;
+          transition: opacity .3s linear;
+}
+
+/* hide labels when hovering */
+.pane:hover .pane-label {
+  opacity: 0; 
+  -webkit-transition: opacity .3s linear;
+     -moz-transition: opacity .3s linear;
+          transition: opacity .3s linear;
+}
+
+.editor textarea {
+  padding: 6px;
+  width: 100%;
+  max-width: 100%; /* keep textarea from resizing l/r */
+  height: 100%;
+  overflow: scroll;
+  border: none;
+}
+
+footer {
+  border-top: 1px solid #dddddd;
+  padding: 24px 0;
+}
+
+footer p {
+  margin-bottom: 10px;
 }
