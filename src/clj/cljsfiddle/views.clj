@@ -36,7 +36,8 @@
     [:script {:src "/js/addon/edit/matchbrackets.js"}]
     [:script {:src "/js/addon/edit/closebrackets.js"}]
     [:script {:src "/js/app.js"}]
-    [:script "cljsfiddle.core.init(" (env :cljsfiddle-version) ");"]]])
+    ; TODO figure out why the snapshot version is fucked
+    [:script "cljsfiddle.core.init('0.1.0-SNAPSHOT');"]]])
 
 (def ^:private github-login-url (str "https://github.com/login/oauth/authorize?client_id=" (env :github-client-id)))
 
@@ -63,8 +64,7 @@
          [:div#alert]]
 
         [:div.row
-         [:div.col-lg-6
-          [:div.panes
+         [:div.panes.col-lg-6
            [:div#html-editor.pane.editor.small
             [:span.pane-label "HTML"]
             [:textarea#html-editor (escape-html (-> fiddle 
@@ -76,9 +76,8 @@
             [:textarea#cljs-editor (escape-html (-> fiddle 
                                                              :cljsfiddle/cljs
                                                              :cljsfiddle.src/blob
-                                                             :cljsfiddle.blob/text))]]]]
-           [:div.col-lg-6
-             [:div.panes
+                                                             :cljsfiddle.blob/text))]]]
+           [:div.panes.col-lg-6
                [:div#css-editor.pane.editor.small
                 [:span.pane-label "CSS"]
                 [:textarea#css-editor (escape-html (-> fiddle 
@@ -89,7 +88,7 @@
                 [:span.pane-label "Result"]
                 [:iframe#result-frame.col-lg-12 {:seamless "seamless"
                                                  :sandbox "allow-scripts"
-                                                 :width "100%"}]]]]]
+                                                 :width "100%"}]]]]
         [:footer.row
          [:div.col-lg-12
           [:p.text-center

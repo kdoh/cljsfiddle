@@ -52,7 +52,8 @@
   [version] 
   
   (let [html-editor (code-mirror "html-editor" {:lineNumbers true})
-        css-editor (code-mirror "css-editor" {:mode :css :lineNumbers true})
+        css-editor (code-mirror "css-editor" {:mode :css
+                                              :lineNumbers true})
         cljs-editor (code-mirror "cljs-editor" {:mode :clojure 
                                                 :lineNumbers true 
                                                 :autoCloseBrackets true 
@@ -60,10 +61,6 @@
         result-frame (domina/by-id "result-frame")
         run-btn (domina/by-id "run-btn")
         save-btn (domina/by-id "save-btn")]
-    
-    (.setSize cljs-editor "100%" "455px")
-    (.setSize html-editor "100%" "455px")
-    (.setSize css-editor  "100%" "455px")
 
     (events/listen! run-btn :click
                     (fn [e]
@@ -93,12 +90,4 @@
                                     (dom/remove-class! save-btn "disabled")
                                     (if (= (:status res) :success)
                                        (alert-success "Fiddle saved successfully!")
-                                       (alert-error (:msg res))))})))
-
-    (.on (js/$ "a[data-toggle=\"tab\"]") 
-         "shown.bs.tab" 
-         (fn [evt]
-           (condp = (dom/attr (.-target evt) :href)
-             "#cljs-editor-tab" (.refresh cljs-editor)
-             "#html-editor-tab" (.refresh html-editor)
-             "#css-editor-tab" (.refresh css-editor))))))
+                                       (alert-error (:msg res))))})))))
